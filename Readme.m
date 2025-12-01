@@ -1,82 +1,119 @@
-📊 Exchange Rate Automation (Make.com → Google Sheets)
+📈 Exchange Rate Automation — Make.com → Google Sheets
 
-This project automates the process of fetching daily USD exchange rates and logging them into Google Sheets for use in Power BI or other reporting tools.
-
-It removes manual work and ensures exchange rates are always up-to-date.
+Automatically fetches daily USD exchange rates and logs them into Google Sheets for use in dashboards like Power BI.
 
 🚀 Project Overview
 
-The automation runs on a daily schedule:
+This automation pulls live USD exchange rates (INR, EUR, etc.) daily from ExchangeRate-API, then inserts the timestamped values into a Google Sheet.
 
-A scheduled trigger starts the scenario.
+You no longer need to manually search, copy, or update currency rates — Make.com does it automatically.
 
-The HTTP module calls the ExchangeRate API to retrieve live USD exchange rates.
+🛠️ Tools & Services Used
 
-The Google Sheets module appends a row containing:
+Make.com – Automation builder
+
+ExchangeRate-API – Provides real-time currency rates
+
+Google Sheets – Stores historical rates
+
+Google Cloud Connection – For Make-to-Sheets integration
+
+📂 Project Structure
+.
+├── screenshot/
+│   ├── Exchange Rate.png
+│   ├── Google sheet.png
+│   ├── HTTP → Google Sheets.png
+│   ├── myflow.jpg.png
+│
+└── Integration HTTP.blueprint.json   <- Exported Make.com scenario
+
+🔁 Automation Architecture
+1. HTTP Module → GET request to ExchangeRate API
+
+Fetches live exchange rates.
+
+Screenshot:
+/screenshot/HTTP → Google Sheets.png
+
+2. Google Sheets → Add a Row
+
+Appends:
 
 Timestamp
 
-USD
+USD base (always 1)
 
-INR rate
+INR Rate
 
-EUR rate
+EUR Rate
 
-The sheet stays continuously updated with the latest values.
+Screenshot:
+/screenshot/Google sheet.png
 
-🧩 Workflow (Make.com Scenario)
+3. Flow Diagram
 
-Modules used:
+Your complete scenario as seen inside Make.com.
 
-HTTP (GET) — fetch rates from ExchangeRate API
+Screenshot:
+/screenshot/myflow.jpg.png
 
-Google Sheets → Add Row — log the values
+📡 API Used
+Endpoint:
+https://v6.exchangerate-api.com/v6/YOUR_API_KEY/latest/USD
 
-Daily Scheduler — run automatically once a day
 
-Scenario Screenshot
+Your screenshot contains the real key — but you should never expose it publicly.
+Make sure you delete the key from screenshots before uploading.
 
-(Replace with actual screenshot in the repo)
-/screenshot/scenario.png
+📅 Daily Trigger
 
-🗄️ Google Sheet Output
+The scenario is configured to run automatically every 24 hours using Make’s scheduler.
 
-The sheet stores data in the following format:
+📊 Google Sheet Output
+
+The sheet stores data in this format:
 
 Date / Timestamp	USD	INR Rate	EUR Rate
 2025-10-07	1	85.84	0.862
-2025-12-01T16:43:56Z	1	89.4521	0.8625
-Sheet Screenshot
+2025-12-01T16:43:56.209Z	1	89.4521	0.8625
 
-/screenshot/sheet.png
+Screenshot:
+/screenshot/Exchange Rate.png
 
-🔧 Tech Stack
+📸 Scenario & Sheet Screenshots
+1️⃣ Flow Overview
 
-Make.com
+/screenshot/myflow.jpg.png
 
-HTTP API Calls
+2️⃣ HTTP → Google Sheets Mapping
 
-Google Sheets
+/screenshot/HTTP → Google Sheets.png
 
-ExchangeRate API
+3️⃣ Google Sheets Module Setup
 
-JSON Parsing
+/screenshot/Google sheet.png
 
-📁 Project Structure
-File	Description
-Integration HTTP.blueprint.json	Exported Make.com scenario
-screenshot/	Scenario + Google Sheets screenshots
-README.md	Project documentation
-🎯 Purpose
+4️⃣ Google Sheet Output
 
-The goal of this project is to demonstrate:
+/screenshot/Exchange Rate.png
 
-Automation of repetitive data collection
+📦 Included in Repository
 
-Integration of external APIs with Google Sheets
+✔️ Exported Make.com Scenario (JSON)
+✔️ All screenshots
+✔️ Complete documentation (this README)
 
-Ability to design clean, scheduled workflows
+🎯 Why This Project?
 
-Use of no-code/low-code tools for real business use cases
+This project demonstrates your ability to:
 
-This is a practical automation example suitable for data analytics, automation engineering, or SDE portfolios.
+Integrate APIs
+
+Build no-code automation workflows
+
+Connect Make.com with Google Sheets
+
+Handle real-time data collection
+
+Design pipelines usable for Data Analytics & BI dashboards
